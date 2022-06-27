@@ -7,7 +7,6 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-// Stub
 public class PostRepository {
 
   private final ConcurrentHashMap<Long,Post> posts;
@@ -30,7 +29,7 @@ public class PostRepository {
       long id = idCounter.incrementAndGet();
       post.setId(id);
       posts.put(id, post);
-    } else {
+    } else if (post.getId() != 0){
       Long currentId = post.getId();
       posts.put(currentId, post);
     }
