@@ -25,18 +25,22 @@ public class PostRepository {
   }
 
   public Post save(Post post) {
-    if(post.getId() == 0) {
-      long id = idCounter.incrementAndGet();
-      post.setId(id);
-      posts.put(id, post);
-    } else if (post.getId() != 0){
-      Long currentId = post.getId();
-      posts.put(currentId, post);
+    synchronized (posts) {
+      if (post.getId() == 0) {
+        long id = idCounter.incrementAndGet();
+        post.setId(id);
+        posts.put(id, post);
+      } else if (post.getId() != 0) {
+        Long currentId = post.getId();
+        posts.put(currentId, post);
+      }
+      return post;
     }
-    return post;
   }
 
   public void removeById(long id) {
-    posts.remove(id);
+    synchronized (posts) {
+      posts.remove(id);
+    }
   }
 }
