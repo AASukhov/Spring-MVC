@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class MainServlet extends HttpServlet {
+public class
+MainServlet extends HttpServlet {
   public static final String API_POSTS = "/api/posts";
   public static final String API_POSTS_D = "/api/posts/\\d+";
   public static final String STR = "/";
+
 
 
   private PostController controller;
