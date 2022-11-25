@@ -15,6 +15,4 @@ public class Config {
         bean.getMessageConverters().add(new GsonHttpMessageConverter());
         return bean;
     }
-
-
 }
